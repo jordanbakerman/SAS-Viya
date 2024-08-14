@@ -1,3 +1,3 @@
 # SAS-Viya
 
-This repo is dedicated to SAS Viya content for both SAS and Python.
+This repo is dedicated to SAS Viya content for SAS, Python, and R.
