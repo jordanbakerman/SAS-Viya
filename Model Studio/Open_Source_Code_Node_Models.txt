@@ -1,0 +1,155 @@
+
+#####################
+# Logistic Regression
+#####################
+
+# Import Packages
+from sklearn.linear_model import LogisticRegression
+
+# Get Training Data
+df_train = dm_traindf[dm_input]
+
+# Dummy Code Categorical Variables
+df_train_encoded = pd.get_dummies(df_train, columns=dm_class_input, drop_first=True)
+
+# Get Labels
+df_label = dm_traindf[dm_dec_target]
+
+# Fit Model With Training Data
+dm_model = LogisticRegression(random_state=802)
+dm_model.fit(df_train_encoded, df_label)
+print(dm_model)
+
+# Score Full Data
+df_all_encoded = pd.get_dummies(dm_inputdf[dm_input], columns=dm_class_input, drop_first=True)
+dm_scoreddf = pd.DataFrame(dm_model.predict_proba(df_all_encoded), columns=['P_BAD0', 'P_BAD1'])
+
+
+
+###############
+# Decision Tree
+###############
+
+# Import Packages
+from sklearn.tree import DecisionTreeClassifier
+
+# Get Training Data
+df_train = dm_traindf[dm_input]
+
+# Dummy Code Categorical Variables
+df_train_encoded = pd.get_dummies(df_train, columns=dm_class_input, drop_first=True)
+
+# Get Labels
+df_label = dm_traindf[dm_dec_target]
+
+# Fit Model With Training Data
+dm_model = DecisionTreeClassifier(random_state=802)
+dm_model.fit(df_train_encoded, df_label)
+print(dm_model)
+
+# Print Variable Importance
+varimp = pd.DataFrame(list(zip(df_train_encoded, dm_model.feature_importances_)), columns=['Variable Name', 'Importance'])
+print(varimp)
+
+# Score Full Data
+df_all_encoded = pd.get_dummies(dm_inputdf[dm_input], columns=dm_class_input, drop_first=True)
+dm_scoreddf = pd.DataFrame(dm_model.predict_proba(df_all_encoded), columns=['P_BAD0', 'P_BAD1'])
+
+
+
+###############
+# Random Forest
+###############
+
+# Import Packages
+from sklearn.ensemble import RandomForestClassifier
+
+# Get Training Data
+df_train = dm_traindf[dm_input]
+
+# Dummy Code Categorical Variables
+df_train_encoded = pd.get_dummies(df_train, columns=dm_class_input, drop_first=True)
+
+# Get Labels
+df_label = dm_traindf[dm_dec_target]
+
+# Fit Model With Training Data
+dm_model = RandomForestClassifier(random_state=802)
+dm_model.fit(df_train_encoded, df_label)
+print(dm_model)
+
+# Print Variable Importance
+varimp = pd.DataFrame(list(zip(df_train_encoded, dm_model.feature_importances_)), columns=['Variable Name', 'Importance'])
+print(varimp)
+
+# Score Full Data
+df_all_encoded = pd.get_dummies(dm_inputdf[dm_input], columns=dm_class_input, drop_first=True)
+dm_scoreddf = pd.DataFrame(dm_model.predict_proba(df_all_encoded), columns=['P_BAD0', 'P_BAD1'])
+
+
+
+###################
+# Gradient Boosting
+###################
+
+# Import Packages
+from sklearn.ensemble import GradientBoostingClassifier
+
+# Get Training Data
+df_train = dm_traindf[dm_input]
+
+# Dummy Code Categorical Variables
+df_train_encoded = pd.get_dummies(df_train, columns=dm_class_input, drop_first=True)
+
+# Get Labels
+df_label = dm_traindf[dm_dec_target]
+
+# Fit Model With Training Data
+dm_model = GradientBoostingClassifier(random_state=802)
+dm_model.fit(df_train_encoded, df_label)
+print(dm_model)
+
+# Print Variable Importance
+varimp = pd.DataFrame(list(zip(df_train_encoded, dm_model.feature_importances_)), columns=['Variable Name', 'Importance'])
+print(varimp)
+
+# Score Full Data
+df_all_encoded = pd.get_dummies(dm_inputdf[dm_input], columns=dm_class_input, drop_first=True)
+dm_scoreddf = pd.DataFrame(dm_model.predict_proba(df_all_encoded), columns=['P_BAD0', 'P_BAD1'])
+
+
+
+################
+# Neural Network
+################
+
+# Import Packages
+from sklearn.neural_network import MLPClassifier
+
+# Get Training Data
+df_train = dm_traindf[dm_input]
+
+# Dummy Code Categorical Variables
+df_train_encoded = pd.get_dummies(df_train, columns=dm_class_input, drop_first=True)
+
+# Get Labels
+df_label = dm_traindf[dm_dec_target]
+
+# Fit Model With Training Data
+dm_model = MLPClassifier(solver='lbfgs', alpha=1e-5, hidden_layer_sizes=(20, 20), random_state=802)
+dm_model.fit(df_train_encoded, df_label)
+print(dm_model)
+
+# Score Full Data
+df_all_encoded = pd.get_dummies(dm_inputdf[dm_input], columns=dm_class_input, drop_first=True)
+dm_scoreddf = pd.DataFrame(dm_model.predict_proba(df_all_encoded), columns=['P_BAD0', 'P_BAD1'])
+
+
+
+
+
+
+
+
+
+
